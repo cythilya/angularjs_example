@@ -13,7 +13,6 @@ app.controller('todosCtrl', function($scope) {
     $scope.addItem = function(newItem){
         var newInputItem = angular.copy(newItem),
             newItem = { id: $scope.counter+1, title: newInputItem, status: 0};
-            console.log(newInputItem);
         if(newItem.title != undefined){
             $scope.todos.push(newItem);
             $scope.reset();
