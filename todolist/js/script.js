@@ -49,10 +49,12 @@ app.controller('todosCtrl', function($scope) {
     };
 
     //change item status - done or undo
+    //將這個項目改為已完成的狀態
     $scope.done = function(item){
         var thisItem = item;
         thisItem.status = 1;
     };
+    //將這個項目改為未完成的狀態
     $scope.undo = function(item){
         var thisItem = item;
         thisItem.status = 0;

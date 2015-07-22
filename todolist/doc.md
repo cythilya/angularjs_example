@@ -111,10 +111,29 @@
 
 ###改變狀態：做完 / 未做完
 
-
-
 ####HTML
+如果未完成，則出現以下程式碼，讓使用者可以按下「Done」將這個項目改為已完成的狀態。
+
+	<button type="button" class="btn btn-default" ng-click="done(x)" ng-hide="x.status">Done</button>
+
+如果已完成，則出現以下程式碼，讓使用者可以按下「Undo」將這個項目改為未完成的狀態。
+
+	<button type="button" class="btn btn-default" ng-click="undo(x)" ng-show="x.status">Undo</button>
+
 ####JS
+
+	//將這個項目改為已完成的狀態
+    $scope.done = function(item){
+        var thisItem = item;
+        thisItem.status = 1;
+    };
+
+	//將這個項目改為未完成的狀態
+    $scope.undo = function(item){
+        var thisItem = item;
+        thisItem.status = 0;
+    };
+
 
 ###計數
 ####HTML
