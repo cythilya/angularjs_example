@@ -176,7 +176,10 @@
 
 ![AngularJS - TodoList](demo/demo.gif)
 
-
+---
+####參考資料
+- [AngularJS API Docs](https://docs.angularjs.org/api)
+- [AngularJS Tutorial](http://www.w3schools.com/angular)
 
 
 
