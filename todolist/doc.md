@@ -81,7 +81,7 @@
     };
 
 #####儲存
-傳入物件並取值，然後設定給title。記得將edit設為false，關閉編輯狀態。
+傳入此物件並取值，然後設定給title。記得將edit設為false，關閉編輯狀態。
 
     $scope.save = function(item, obj){
         var thisItem = item,
@@ -94,10 +94,25 @@
     }
 
 ###刪除
+我們分別使用`ng-click="remove(x)`綁在按鈕「Remove」上，當按下「Remove」時觸發`remove()`，移除整列項目。
+
 ####HTML
+
+	<button type="button" class="btn btn-default" ng-click="remove(x)">Remove</button>
+
 ####JS
+傳入此物件，並搜尋目前todos陣列中這個物件的位置並移除它。  
+
+    $scope.remove = function(item){
+        var thisItem = item,
+            index = $scope.todos.indexOf(item);
+        $scope.todos.splice(index, 1);       
+    };
 
 ###改變狀態：做完 / 未做完
+
+
+
 ####HTML
 ####JS
 
