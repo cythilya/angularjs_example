@@ -15,6 +15,7 @@ app.controller('todosCtrl', function($scope) {
             newItem = { id: $scope.counter+1, title: newInputItem, status: 0};
         if(newItem.title != undefined){
             $scope.todos.push(newItem);
+            $scope.counter++;
             $scope.reset();
         }
     };
