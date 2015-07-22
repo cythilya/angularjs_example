@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AngularJS - TodoList</title>
+<link rel="stylesheet" href="css/clearfix.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/style.css">
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="todolist" ng-app="todolist" ng-controller="todosCtrl">
+	<h1>AngularJS TodoList</h1>
+    <div class="input-group">
+    	<input type="text" class="form-control" placeholder="Search for..." ng-model="searchInput">
+    	<span class="input-group-btn">
+        	<button class="btn btn-default" type="button">Go!</button>
+    	</span>
+    </div>
+	<table class="table">
+		<thead>
+			<tr>
+			  <th class="number">#</th>
+			  <th class="title">Title</th>
+			  <th class="control">Control</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="done" ng-repeat="x in todos | filter: searchInput">
+				<td scope="row">
+					{{ x.id }}
+				</td>
+				<td>
+					<span ng-class="{1: 'strike', 0: 'nonstrike'}[x.status]" ng-hide="x.edit">{{ x.title }}</span>
+					<input type="text" id="edit-input-{{ x.id }}" class="form-control" placeholder="type someting here..." ng-show="x.edit" required>
+				</td>
+				<td>
+					<button type="button" class="btn btn-default" ng-click="done(x)" ng-hide="x.status">Done</button>
+					<button type="button" class="btn btn-default" ng-click="undo(x)" ng-show="x.status">Undo</button>
+					<button type="button" class="btn btn-default" ng-click="edit(x)" ng-hide="x.edit" >Edit</button>
+					<button type="button" class="btn btn-default" ng-click="save(x)" ng-show="x.edit">Save</button>
+					<button type="button" class="btn btn-default" ng-click="remove(x)">Remove</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="text" class="form-control" placeholder="type someting here..." ng-model="newItem" required>
+				</td>
+				<td>
+					<button type="button" class="btn btn-default" ng-click="addItem(newItem)">Add New Item</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<span class="label label-default">All ({{ totalCount() }})</span>
+		<span class="label label-success">Done ({{ inactiveCount() }})</span>
+		<span class="label label-warning">Active ({{ activeCount() }})</span>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>	
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
