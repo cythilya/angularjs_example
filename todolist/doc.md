@@ -9,4 +9,7 @@
 - 改變狀態：做完 / 未做完
 - 計數
 
-##範例
+##說明
+
+##Demo
+![AngularJS - TodoList](demo.gif)
