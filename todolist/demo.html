@@ -29,7 +29,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr class="done" ng-repeat="x in todos | filter: searchInput">
+			<tr ng-repeat="x in todos | filter: searchInput">
 				<td scope="row">
 					{{ x.id }}
 				</td>
