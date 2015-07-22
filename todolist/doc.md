@@ -9,8 +9,9 @@
 - 改變狀態：做完 / 未做完
 - 計數
 
-
 ##說明
+###基本設定
+
 ###搜尋
 在搜尋列中，我們利用 `ng-model="searchInput"` 綁定 `<input>`，然後將每個會被重複的todo item區塊標註filter而能依照searchInput的值做篩選。
 
@@ -56,9 +57,53 @@
 `angular.copy` 用途複製資料，我們取得字串後放到newItem這個物件的title欄位中。假設這個字串不為undefined，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。
 
 ###修改
+我們分別使用`ng-click="edit(x)`和`ng-click="save(x)`綁在兩個按鈕「Edit」和「Save」上，當按下「Edit」時觸發`edit()`，並出現輸入框來輸入要修改的字串；而當按下「Save」時觸發`save()'，將修改好字串存回陣列中。
+
+####HTML
+#####兩個按鈕「Edit」和「Save」
+
+	<button type="button" class="btn btn-default" ng-click="edit(x)" ng-hide="x.edit" >Edit</button>
+	<button type="button" class="btn btn-default" ng-click="save(x)" ng-show="x.edit">Save</button>
+
+#####用來輸入要修改的字串的輸入框
+只有在編輯狀態才會顯示，所以用 `ng-show="x.edit` 這個指令設定顯示的時機。
+
+	<input type="text" id="edit-input-{{ x.id }}" class="form-control" placeholder="type someting here..." ng-show="x.edit">
+
+####JS
+#####編輯
+將edit設為true，開啟編輯狀態，並將目前的title值帶入輸入框中。
+
+    $scope.edit = function(item){
+        var thisItem = item;
+        thisItem.edit = true;
+        document.getElementById('edit-input-' + thisItem.id).value = thisItem.title;
+    };
+
+#####儲存
+傳入物件並取值，然後設定給title。記得將edit設為false，關閉編輯狀態。
+
+    $scope.save = function(item, obj){
+        var thisItem = item,
+            thisInputValue = document.getElementById('edit-input-' + thisItem.id).value;
+
+        if(thisInputValue != ''){
+            thisItem.edit = false;
+            thisItem.title = thisInputValue;
+        }
+    }
+
 ###刪除
+####HTML
+####JS
+
 ###改變狀態：做完 / 未做完
+####HTML
+####JS
+
 ###計數
+####HTML
+####JS
 
 ##Demo
 來看一下完成品吧！  

@@ -35,7 +35,7 @@
 				</td>
 				<td>
 					<span ng-class="{1: 'strike', 0: 'nonstrike'}[x.status]" ng-hide="x.edit">{{ x.title }}</span>
-					<input type="text" id="edit-input-{{ x.id }}" class="form-control" placeholder="type someting here..." ng-show="x.edit" required>
+					<input type="text" id="edit-input-{{ x.id }}" class="form-control" placeholder="type someting here..." ng-show="x.edit">
 				</td>
 				<td>
 					<button type="button" class="btn btn-default" ng-click="done(x)" ng-hide="x.status">Done</button>
