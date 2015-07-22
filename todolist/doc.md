@@ -134,10 +134,42 @@
         thisItem.status = 0;
     };
 
-
 ###計數
+顯示全部、已完成、未完成的數目。
+
 ####HTML
+顯示全部、已完成、未完成的數目。
+
+	<div>
+		<span class="label label-default">All ({{ totalCount() }})</span>
+		<span class="label label-success">Done ({{ inactiveCount() }})</span>
+		<span class="label label-warning">Active ({{ activeCount() }})</span>
+	</div>
+
 ####JS
+回傳符合條件的個數。
+
+    $scope.totalCount = function(){
+        return $scope.todos.length;
+    };
+    $scope.activeCount = function(){
+        var activeArray = [];
+        angular.forEach($scope.todos, function(value, key) {
+            if(value.status === 0){
+                this.push(value);    
+            }
+        }, activeArray);
+        return activeArray.length;
+    };
+    $scope.inactiveCount = function(){
+        var inactiveArray = [];
+        angular.forEach($scope.todos, function(value, key){
+            if(value.status === 1){
+                this.push(value);
+            }
+        }, inactiveArray);
+        return inactiveArray.length;
+    };
 
 ##Demo
 來看一下完成品吧！  
