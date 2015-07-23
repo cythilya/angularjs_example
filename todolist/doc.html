@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>doc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>AngularJS - TodoList</h1>
+<p><img src="https://lh3.googleusercontent.com/zCLI5hT7ZfEvYRVo2TZ9BC93sq1lUsTzeDP_39EfQK0=w800-h450-no" alt="AngularJS" /></p>
+<p><a href="https://mobinni.io/2015/06/21/quickfire-compiling-angularjs-with-static-translations">圖片來源：Static translations with AngularJS</a></p>
+<p>大約一年多前(還在前公司)，RD部門的工程師們 <s>被迫</s> 組了讀書會<a href="http://blog.friendo.com.tw">駭客任務</a>，其中一個主題是研究當前火紅的JavaScript框架為之後平台改版做準備，當時還小不懂事的我看到 <a href="http://emberjs.com">EmberJS</a> 的可愛LOGO便自告奮勇研讀。　　</p>
+<p><img src="https://lh3.googleusercontent.com/-U_zQdEk7KuFOBcxy203f8M7Ua431nQxl_OUIvWoN7g=s200-no" alt="EmberJS" />  </p>
+<p>最後公司選了 <a href="https://facebook.github.io/react">React</a> ...。居然就這樣了...都沒好好玩到AngularJS XD  </p>
+<p>好吧，就當作是當年讀書會的複習！從TodoList開始吧！  </p>
+<h2>功能</h2>
+<ul>
+<li>搜尋：輸入關鍵字即可搜尋是否有符合的todo項目，但搜尋範圍僅限於標題。</li>
+<li>新增：新增一個todo項目。</li>
+<li>修改：修改特定todo項目。</li>
+<li>刪除：刪除特定todo項目。</li>
+<li>改變狀態 - 已完成 / 未完成：將todo的狀態標記為已完成或未完成。</li>
+<li>計數：顯示全部、已完成、未完成的數目。</li>
+<li>欄位驗證：提醒欄位必填。</li>
+</ul>
+<h2>說明</h2>
+<h3>基本設定</h3>
+<p>將todo list存在陣列中，每個todo項目有欄位id、title、status、edit</p>
+<ul>
+<li>id：編號。</li>
+<li>title：標題。</li>
+<li>status：目前的狀態，0為未完成，1為已完成。</li>
+<li>
+<p>edit：此todo項目是否在編輯的狀態，0為否，1為是。若處於編輯狀態，畫面會顯示編輯框、儲存鈕，且隱藏編輯鈕。</p>
+<pre><code>$scope.todos = [
+    { id: 1, title: 'Buy milk', status: 1, edit: false},
+    { id: 2, title: 'Call Mary', status: 0, edit: false },
+    { id: 3, title: 'Visit Johe', status: 0, edit: false },
+    { id: 4, title: 'Write an article', status: 0, edit: false }
+];
+</code></pre>
+
+</li>
+</ul>
+<p>並且，使用變數counter記錄下一次新增todo項目的id。初始值為todo總數，每新增一次則加一。</p>
+<pre><code>$scope.counter = $scope.todos.length;
+</code></pre>
+
+<h3>搜尋</h3>
+<p>在搜尋列中，我們利用 <code>ng-model=&quot;searchInput&quot;</code> 綁定 <code>&lt;input&gt;</code>，然後將每個會被重複的todo item區塊標註filter而能依照searchInput的值做篩選。 </p>
+<h4>搜尋input</h4>
+<p>利用 <code>ng-model=&quot;searchInput&quot;</code> 綁定 <code>&lt;input&gt;</code>。</p>
+<pre><code>&lt;input type=&quot;text&quot; placeholder=&quot;Search for...&quot; ng-model=&quot;searchInput&quot;&gt;
+</code></pre>
+
+<h4>todo item區塊</h4>
+<p><code>filter: searchInput</code> 表示依照searchInput的值做篩選。</p>
+<pre><code>&lt;tr ng-repeat=&quot;x in todos | filter: searchInput&quot;&gt;
+    ...
+&lt;/tr&gt;
+</code></pre>
+
+<h3>新增</h3>
+<p>我們可以在最後一行看到一個輸入框，輸入一些文字後按下「Add New Item」按鈕，即可新增新的項目。  </p>
+<h4>HTML</h4>
+<pre><code>&lt;form class=&quot;todolistForm&quot; name=&quot;todolistForm&quot;&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;type someting here...&quot; ng-model=&quot;newItem&quot; required&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Add New Item&quot; ng-click=&quot;addItem(newItem)&quot;&gt;
+    &lt;/td&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>來看上面這段程式碼，<code>ng-model=&quot;newItem&quot;</code>綁定這個<code>&lt;inpu&gt;</code>，然後利用 <code>ng-click</code>監聽「Add New Item」按鈕的click事件，當按下這個按鈕時，執行addItem()這個function，同時將newItem的值傳入function。收到值，便更新todos陣列。  </p>
+<p>欄位驗證相關可參考 <a href="http://www.w3schools.com/angular/angular_validation.asp">AngularJS Input Validation</a>。</p>
+<h4>JS</h4>
+<pre><code>$scope.addItem = function(newItem){
+    var newInputItem = angular.copy(newItem),
+        newItem = { id: $scope.counter+1, title: newInputItem, status: 0};
+    if(newItem.title != undefined){
+        $scope.todos.push(newItem);
+        $scope.reset();
+    }
+};
+</code></pre>
+
+<p><code>angular.copy</code> 用於複製資料，我們取得資料(字串)後放到newItem這個物件的title欄位中。假設這個字串有值(即不為undefined)，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。  </p>
+<h3>修改</h3>
+<p>我們分別使用<code>ng-click=&quot;edit(x)</code>和<code>ng-click=&quot;save(x)</code>綁在兩個按鈕「Edit」和「Save」上，當按下「Edit」時觸發<code>edit()</code>，並出現輸入框來輸入要修改的字串；而當按下「Save」時觸發<code>save()</code>，將修改好字串存回陣列中。</p>
+<h4>HTML</h4>
+<h5>兩個按鈕「Edit」和「Save」</h5>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;edit(x)&quot; ng-hide=&quot;x.edit&quot; &gt;Edit&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;save(x)&quot; ng-show=&quot;x.edit&quot;&gt;Save&lt;/button&gt;
+</code></pre>
+
+<h5>用來輸入要修改的字串的輸入框</h5>
+<p>只有在編輯狀態才會顯示，所以用 <code>ng-show=&quot;x.edit</code> 這個指令設定顯示的時機。</p>
+<pre><code>&lt;input type=&quot;text&quot; id=&quot;edit-input-{{ x.id }}&quot; class=&quot;form-control&quot; placeholder=&quot;type someting here...&quot; ng-show=&quot;x.edit&quot;&gt;
+</code></pre>
+
+<h4>JS</h4>
+<h5>編輯</h5>
+<p>將edit設為true，開啟編輯狀態，並將目前的title值帶入輸入框中。</p>
+<pre><code>$scope.edit = function(item){
+    var thisItem = item;
+    thisItem.edit = true;
+    document.getElementById('edit-input-' + thisItem.id).value = thisItem.title;
+};
+</code></pre>
+
+<h5>儲存</h5>
+<p>傳入此物件並取值，然後設定給title。記得將edit設為false，關閉編輯狀態。</p>
+<pre><code>$scope.save = function(item, obj){
+    var thisItem = item,
+        thisInputValue = document.getElementById('edit-input-' + thisItem.id).value;
+
+    if(thisInputValue != ''){
+        thisItem.edit = false;
+        thisItem.title = thisInputValue;
+    }
+}
+</code></pre>
+
+<h3>刪除</h3>
+<p>使用<code>ng-click=&quot;remove(x)</code>綁在按鈕「Remove」上，當按下「Remove」時觸發<code>remove()</code>，移除整列項目。</p>
+<h4>HTML</h4>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;remove(x)&quot;&gt;Remove&lt;/button&gt;
+</code></pre>
+
+<h4>JS</h4>
+<p>傳入此物件，並搜尋目前todos陣列中這個物件，找到就移除它。  </p>
+<pre><code>$scope.remove = function(item){
+    var thisItem = item,
+        index = $scope.todos.indexOf(item);
+    $scope.todos.splice(index, 1);       
+};
+</code></pre>
+
+<h3>改變狀態：已完成 / 未完成</h3>
+<h4>HTML</h4>
+<p>如果未完成，則出現以下程式碼，讓使用者可以按下「Done」將這個項目改為已完成的狀態。</p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;done(x)&quot; ng-hide=&quot;x.status&quot;&gt;Done&lt;/button&gt;
+</code></pre>
+
+<p>如果已完成，則出現以下程式碼，讓使用者可以按下「Undo」將這個項目改為未完成的狀態。</p>
+<pre><code>&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; ng-click=&quot;undo(x)&quot; ng-show=&quot;x.status&quot;&gt;Undo&lt;/button&gt;
+</code></pre>
+
+<h4>JS</h4>
+<pre><code>//將這個項目改為已完成的狀態
+$scope.done = function(item){
+    var thisItem = item;
+    thisItem.status = 1; //1：已完成
+};
+
+//將這個項目改為未完成的狀態
+$scope.undo = function(item){
+    var thisItem = item;
+    thisItem.status = 0; //0：未完成
+};
+</code></pre>
+
+<h3>計數</h3>
+<p>顯示全部、已完成、未完成的數目。</p>
+<h4>HTML</h4>
+<p>顯示全部、已完成、未完成的數目。</p>
+<pre><code>&lt;div&gt;
+    &lt;span class=&quot;label label-default&quot;&gt;All ({{ totalCount() }})&lt;/span&gt;
+    &lt;span class=&quot;label label-success&quot;&gt;Done ({{ inactiveCount() }})&lt;/span&gt;
+    &lt;span class=&quot;label label-warning&quot;&gt;Active ({{ activeCount() }})&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h4>JS</h4>
+<p>回傳符合條件的todo個數，純粹就是arrray的length計算。。</p>
+<pre><code>$scope.totalCount = function(){
+    return $scope.todos.length;
+};
+
+$scope.activeCount = function(){
+    var activeArray = [];
+    angular.forEach($scope.todos, function(value, key) {
+        if(value.status === 0){
+            this.push(value);    
+        }
+    }, activeArray);
+    return activeArray.length;
+};
+
+$scope.inactiveCount = function(){
+    var inactiveArray = [];
+    angular.forEach($scope.todos, function(value, key){
+        if(value.status === 1){
+            this.push(value);
+        }
+    }, inactiveArray);
+    return inactiveArray.length;
+};
+</code></pre>
+
+<h3>欄位驗證</h3>
+<p>在表單欄位上標註「required」表示必填，若空白則會出現對話框，提醒「請填寫這個欄位」。  </p>
+<p><img src="https://lh3.googleusercontent.com/bN5HYNJtJ4j6ldQ61To-ypeFCL4QJLqAH4JBqfwS5fg=w724-h112-no" alt="欄位驗證" /></p>
+<h2>Demo</h2>
+<p>來看一下完成品吧！  </p>
+<p><img src="demo/demo.gif" alt="AngularJS - TodoList" /></p>
+<hr />
+<h4>參考資料</h4>
+<ul>
+<li><a href="https://docs.angularjs.org/api">AngularJS API Docs</a></li>
+<li><a href="http://www.w3schools.com/angular">AngularJS Tutorial</a></li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
