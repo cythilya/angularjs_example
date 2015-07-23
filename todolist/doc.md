@@ -1,23 +1,43 @@
 #AngularJS - TodoList
-話說兩年前小小摸過[EmberJS](http://emberjs.com)、一年前用[React](https://facebook.github.io/react)寫過幾個plugin後，就沒再摸其他的Framework，甚至連AngulrJS這麼火紅的東西都沒好好認真玩過。先來寫個TodoList複習一下吧。
+
+![AngularJS](https://lh3.googleusercontent.com/zCLI5hT7ZfEvYRVo2TZ9BC93sq1lUsTzeDP_39EfQK0=w800-h450-no)
+
+[圖片來源：Static translations with AngularJS](https://mobinni.io/2015/06/21/quickfire-compiling-angularjs-with-static-translations)
+
+大約一年多前(還在前公司)，RD部門的工程師們 <s>被迫</s> 組了讀書會[駭客任務](http://blog.friendo.com.tw)，其中一個主題是研究當前火紅的JavaScript框架為之後平台改版做準備，當時還小不懂事的我看到 [EmberJS](http://emberjs.com) 的可愛LOGO便自告奮勇研讀。　　
+
+![EmberJS](https://lh3.googleusercontent.com/-U_zQdEk7KuFOBcxy203f8M7Ua431nQxl_OUIvWoN7g=s200-no)  
+
+最後公司選了 [React](https://facebook.github.io/react) ...。居然就這樣了...都沒好好玩到AngularJS XD  
+
+好吧，就當作是當年讀書會的複習！從TodoList開始吧！  
 
 ##功能
-- 搜尋
-- 新增
-- 修改
-- 刪除
-- 改變狀態：做完 / 未做完
-- 計數
+- 搜尋：輸入關鍵字即可搜尋是否有符合的todo項目，但搜尋範圍僅限於標題。
+- 新增：新增一個todo項目。
+- 修改：修改特定todo項目。
+- 刪除：刪除特定todo項目。
+- 改變狀態 - 已完成 / 未完成：將todo的狀態標記為已完成或未完成。
+- 計數：顯示全部、已完成、未完成的數目。
 
 ##說明
 ###基本設定
+將todo list存在陣列中，每個todo項目有欄位id、title、status、edit
 
-    $scope.todos = [
-        { id: 1, title: 'Buy milk', status: 1, edit: false}, //0: active, 1: done
-        { id: 2, title: 'Call Mary', status: 0, edit: false },
-        { id: 3, title: 'Visit Johe', status: 0, edit: false },
-        { id: 4, title: 'Write an article', status: 0, edit: false }
-    ];
+ - id：編號。
+ - title：標題。
+ - status：目前的狀態，0為未完成，1為已完成。
+ - edit：此todo項目是否在編輯的狀態，0為否，1為是。若處於編輯狀態，畫面會顯示編輯框、儲存鈕，且隱藏編輯鈕。
+
+	    $scope.todos = [
+	        { id: 1, title: 'Buy milk', status: 1, edit: false},
+	        { id: 2, title: 'Call Mary', status: 0, edit: false },
+	        { id: 3, title: 'Visit Johe', status: 0, edit: false },
+	        { id: 4, title: 'Write an article', status: 0, edit: false }
+	    ];
+
+並且，使用變數counter記錄下一次新增todo項目的id。初始值為todo總數，每新增一次則加一。
+
     $scope.counter = $scope.todos.length;
 
 ###搜尋
@@ -49,7 +69,7 @@
 		</td>
 	</tr>
 
-來看上面這段程式碼，`ng-model="newItem"`綁定這個`<inpu>`，然後利用 `ng-click`監聽「Add New Item」按鈕的click事件，當按下這個按鈕時，執行addItem()這個function，同時將newItem的值傳入function。  
+來看上面這段程式碼，`ng-model="newItem"`綁定這個`<inpu>`，然後利用 `ng-click`監聽「Add New Item」按鈕的click事件，當按下這個按鈕時，執行addItem()這個function，同時將newItem的值傳入function。收到值，便更新todos陣列。  
 
 ####JS
 
@@ -62,10 +82,10 @@
         }
     };
 
-`angular.copy` 用途複製資料，我們取得字串後放到newItem這個物件的title欄位中。假設這個字串不為undefined，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。
+`angular.copy` 用於複製資料，我們取得資料(字串)後放到newItem這個物件的title欄位中。假設這個字串有值(即不為undefined)，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。
 
 ###修改
-我們分別使用`ng-click="edit(x)`和`ng-click="save(x)`綁在兩個按鈕「Edit」和「Save」上，當按下「Edit」時觸發`edit()`，並出現輸入框來輸入要修改的字串；而當按下「Save」時觸發`save()'，將修改好字串存回陣列中。
+我們分別使用`ng-click="edit(x)`和`ng-click="save(x)`綁在兩個按鈕「Edit」和「Save」上，當按下「Edit」時觸發`edit()`，並出現輸入框來輸入要修改的字串；而當按下「Save」時觸發`save()`，將修改好字串存回陣列中。
 
 ####HTML
 #####兩個按鈕「Edit」和「Save」
@@ -102,14 +122,14 @@
     }
 
 ###刪除
-我們分別使用`ng-click="remove(x)`綁在按鈕「Remove」上，當按下「Remove」時觸發`remove()`，移除整列項目。
+使用`ng-click="remove(x)`綁在按鈕「Remove」上，當按下「Remove」時觸發`remove()`，移除整列項目。
 
 ####HTML
 
 	<button type="button" class="btn btn-default" ng-click="remove(x)">Remove</button>
 
 ####JS
-傳入此物件，並搜尋目前todos陣列中這個物件的位置並移除它。  
+傳入此物件，並搜尋目前todos陣列中這個物件，找到就移除它。  
 
     $scope.remove = function(item){
         var thisItem = item,
@@ -117,7 +137,7 @@
         $scope.todos.splice(index, 1);       
     };
 
-###改變狀態：做完 / 未做完
+###改變狀態：已完成 / 未完成
 
 ####HTML
 如果未完成，則出現以下程式碼，讓使用者可以按下「Done」將這個項目改為已完成的狀態。
@@ -133,13 +153,13 @@
 	//將這個項目改為已完成的狀態
     $scope.done = function(item){
         var thisItem = item;
-        thisItem.status = 1;
+        thisItem.status = 1; //1：已完成
     };
 
 	//將這個項目改為未完成的狀態
     $scope.undo = function(item){
         var thisItem = item;
-        thisItem.status = 0;
+        thisItem.status = 0; //0：未完成
     };
 
 ###計數
@@ -155,11 +175,12 @@
 	</div>
 
 ####JS
-回傳符合條件的個數。
+回傳符合條件的todo個數，純粹就是arrray的length計算。。
 
     $scope.totalCount = function(){
         return $scope.todos.length;
     };
+
     $scope.activeCount = function(){
         var activeArray = [];
         angular.forEach($scope.todos, function(value, key) {
@@ -169,6 +190,7 @@
         }, activeArray);
         return activeArray.length;
     };
+
     $scope.inactiveCount = function(){
         var inactiveArray = [];
         angular.forEach($scope.todos, function(value, key){
