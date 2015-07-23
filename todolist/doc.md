@@ -19,6 +19,7 @@
 - 刪除：刪除特定todo項目。
 - 改變狀態 - 已完成 / 未完成：將todo的狀態標記為已完成或未完成。
 - 計數：顯示全部、已完成、未完成的數目。
+- 欄位驗證：提醒欄位必填。
 
 ##說明
 ###基本設定
@@ -60,16 +61,18 @@
 
 ####HTML
 
-	<tr>
+	<form class="todolistForm" name="todolistForm">
 		<td colspan="2">
 			<input type="text" class="form-control" placeholder="type someting here..." ng-model="newItem" required>
 		</td>
 		<td>
-			<button type="button" class="btn btn-default" ng-click="addItem(newItem)">Add New Item</button>
+			<input type="submit" value="Add New Item" ng-click="addItem(newItem)">
 		</td>
-	</tr>
+	</form>
 
 來看上面這段程式碼，`ng-model="newItem"`綁定這個`<inpu>`，然後利用 `ng-click`監聽「Add New Item」按鈕的click事件，當按下這個按鈕時，執行addItem()這個function，同時將newItem的值傳入function。收到值，便更新todos陣列。  
+
+欄位驗證相關可參考 [AngularJS Input Validation](http://www.w3schools.com/angular/angular_validation.asp)。
 
 ####JS
 
@@ -82,7 +85,7 @@
         }
     };
 
-`angular.copy` 用於複製資料，我們取得資料(字串)後放到newItem這個物件的title欄位中。假設這個字串有值(即不為undefined)，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。
+`angular.copy` 用於複製資料，我們取得資料(字串)後放到newItem這個物件的title欄位中。假設這個字串有值(即不為undefined)，那就加入到todos這個陣列裡面，然後reset輸入框(意即還原成尚未打字前的樣子)。  
 
 ###修改
 我們分別使用`ng-click="edit(x)`和`ng-click="save(x)`綁在兩個按鈕「Edit」和「Save」上，當按下「Edit」時觸發`edit()`，並出現輸入框來輸入要修改的字串；而當按下「Save」時觸發`save()`，將修改好字串存回陣列中。
@@ -200,6 +203,11 @@
         }, inactiveArray);
         return inactiveArray.length;
     };
+
+###欄位驗證
+在表單欄位上標註「required」表示必填，若空白則會出現對話框，提醒「請填寫這個欄位」。  
+
+![欄位驗證](https://lh3.googleusercontent.com/bN5HYNJtJ4j6ldQ61To-ypeFCL4QJLqAH4JBqfwS5fg=w724-h112-no)
 
 ##Demo
 來看一下完成品吧！  

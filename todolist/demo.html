@@ -46,12 +46,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<input type="text" class="form-control" placeholder="type someting here..." ng-model="newItem" required>
-				</td>
-				<td>
-					<button type="button" class="btn btn-default" ng-click="addItem(newItem)">Add New Item</button>
-				</td>
+				<form class="todolistForm" name="todolistForm">
+					<td colspan="2">
+						<input type="text" class="form-control" placeholder="type someting here..." ng-model="newItem" required>
+					</td>
+					<td>
+						<input type="submit" value="Add New Item" ng-click="addItem(newItem)">
+					</td>
+				</form>
 			</tr>
 		</tbody>
 	</table>
