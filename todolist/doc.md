@@ -42,7 +42,7 @@
     $scope.counter = $scope.todos.length;
 
 ###搜尋
-在搜尋列中，我們利用 `ng-model="searchInput"` 綁定 `<input>`，然後將每個會被重複的todo item區塊標註filter而能依照searchInput的值做篩選。
+在搜尋列中，我們利用 `ng-model="searchInput"` 綁定 `<input>`，然後將每個會被重複的todo item區塊標註filter而能依照searchInput的值做篩選。 
 
 ####搜尋input
 利用 `ng-model="searchInput"` 綁定 `<input>`。
