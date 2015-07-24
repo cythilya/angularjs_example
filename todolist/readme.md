@@ -1,17 +1,4 @@
 #AngularJS - TodoList
-
-![AngularJS](https://lh3.googleusercontent.com/zCLI5hT7ZfEvYRVo2TZ9BC93sq1lUsTzeDP_39EfQK0=w800-h450-no)
-
-[圖片來源：Static translations with AngularJS](https://mobinni.io/2015/06/21/quickfire-compiling-angularjs-with-static-translations)
-
-大約一年多前(還在前公司)，RD部門的工程師們 <s>被迫</s> 組了讀書會[駭客任務](http://blog.friendo.com.tw)，其中一個主題是研究當前火紅的JavaScript框架為之後平台改版做準備，當時還小不懂事的我看到 [EmberJS](http://emberjs.com) 的可愛LOGO便自告奮勇研讀。　　
-
-![EmberJS](https://lh3.googleusercontent.com/-U_zQdEk7KuFOBcxy203f8M7Ua431nQxl_OUIvWoN7g=s200-no)  
-
-最後公司選了 [React](https://facebook.github.io/react) ...。居然就這樣了...都沒好好玩到AngularJS XD  
-
-好吧，就當作是當年讀書會的複習！從TodoList開始吧！  
-
 ##功能
 - 搜尋：輸入關鍵字即可搜尋是否有符合的todo項目，但搜尋範圍僅限於標題。
 - 新增：新增一個todo項目。
@@ -210,11 +197,7 @@
 ![欄位驗證](https://lh3.googleusercontent.com/bN5HYNJtJ4j6ldQ61To-ypeFCL4QJLqAH4JBqfwS5fg=w724-h112-no)
 
 ##Demo
-來看一下完成品吧！  
-
 ![AngularJS - TodoList](demo/demo.gif)  
-
-[Source Code](https://github.com/cythilya/angularjs-example/tree/master/todolist)  
 
 ---
 ####參考資料
