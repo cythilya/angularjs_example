@@ -1,2 +1,2 @@
 #AngularJS Example
-- [TodoList](todolist/readme.md)
+- [TodoList](todolist)
