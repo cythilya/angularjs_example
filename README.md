@@ -1,2 +1,2 @@
-#AngularJS Example
+#Angular Example
 - [TodoList](todolist)
