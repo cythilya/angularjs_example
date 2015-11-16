@@ -7,4 +7,4 @@
 		- [用在物件上](ng-repeat/object.html)
 		- [helper變數](ng-repeat/helper.html)
 		- [以ID追蹤](ng-repeat/track-by-id.html)
-		- [多個HTML元素之間](ng-repeat)
+		- [多個HTML元素之間](ng-repeat/ng-repeat-start-end.html)
