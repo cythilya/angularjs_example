@@ -5,28 +5,44 @@
 <title>Notes App</title>
 </head>
 <body ng-controller="MainCtrl as ctrl">
-<form ng-submit="ctrl.submit1()">
-	<input type="text" ng-model="ctrl.username">
-	<input type="password" ng-model="ctrl.password">
-	<input type="submit" value="Submit">
-</form>
-<form ng-submit="ctrl.submit2()">
-	<input type="text" ng-model="ctrl.user.username">
-	<input type="password" ng-model="ctrl.user.password">
-	<input type="submit" value="Submit">
+<form ng-submit="ctrl.submit()" name="myForm">
+	<input type="text"
+		name="uname"
+		ng-model="ctrl.user.username"
+		required
+		ng-minlength="4">
+	<br>
+	<span ng-show="myForm.uname.$error.required">
+		This is a required field
+	</span>
+	<span ng-show="myForm.uname.$error.minlength">
+		Minimum length required is 4
+	</span>
+	<span ng-show="myForm.uname.$invalid">
+		This field is invalid
+	</span>
+	<br>
+	<input type="password"
+		name="pwd" 
+		ng-model="ctrl.user.password"
+		required>
+	<br>
+	<span ng-show="myForm.pwd.$error.required">
+		This is a required field
+	</span>
+	<br>
+	<br>
+	<input type="submit" 
+		value="Submit"
+		ng-disabled="myForm.$invalid">
 </form>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>	
 <script>
 angular.module('notesApp', [])
 	.controller('MainCtrl', [function(){
 		var self = this;
-		self.submit1 = function() {
-			//create user object to send to the server
-			var user = {username: self.username, password: self.password};
-			console.log('First form submit with ', user);
-		};
-		self.submit2 = function() {
-			console.log('Second form submit with ', self.user);
+		self.submit = function(){
+			console.log('User clicked submit with ', self.user);
 		};
 	}]);
 </script>
