@@ -128,13 +128,13 @@ input.ng-dirty.ng-valid{
 	<div class="group">
     	<fieldset>
       		<legend>Select a dessert you like to eat</legend>
-      		<div class="itemList" ng-repeat="dessert in ctrl.user.desserts">
+      		<div class="itemList" ng-init=" fav = { desserts: 'Ice Cream'} " ng-repeat="dessert in ctrl.user.desserts">
 		      	<div class="item">
 		      		<input 
 		      			id="{{dessert.label}}" 
 		      			name="field5" 
 		      			type="radio"
-		      			ng-model="user.desserts"
+		      			ng-model="fav.desserts"
 		      			value="{{dessert.label}}">
 		      		<label class="choice" for="{{dessert.label}}" ng-bind="dessert.label"></label>
 		      	</div>
