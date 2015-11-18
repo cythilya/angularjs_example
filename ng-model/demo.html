@@ -49,11 +49,13 @@ input.ng-dirty.ng-valid{
       			type="email" 
       			required
       			ng-minlength="3"
+            ng-maxlength="100"
       			ng-model="ctrl.user.email"> 
 	    	<ul class="errorMsg">
 	    		<li ng-show="profileForm.email.$error.required">This is a required field.</li>
 	    		<!-- <li ng-show="profileForm.email.$invalid">This field is invalid.</li> -->
-	    		<li ng-show="profileForm.email.$error.minlength">Minium length required is 3.</li>
+          <li ng-show="profileForm.email.$error.minlength">Minium length required is 3.</li>
+	    		<li ng-show="profileForm.email.$error.maxlength">Max length required is 100.</li>
 	    		<li ng-show="profileForm.email.$error.email">Invalid email format.</li>
 	    	</ul>      			
    		</div>
