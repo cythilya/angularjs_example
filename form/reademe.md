@@ -93,8 +93,6 @@
 		若欄位內容合法，則欄位背景顏色是白色。
 
 ##Demo
-![Angular.js Form Example 表單練習](https://goo.gl/BWKCit)  
-
 - [Demo](http://cythilya.github.io/angularjs-example/form/demo.html)
 - [原始碼下載](https://github.com/cythilya/angularjs-example/releases)
 
