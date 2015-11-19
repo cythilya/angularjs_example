@@ -1,10 +1,5 @@
 #Angular.js Form Example 表單練習
-
-![Angular.js Form Example 表單練習](https://goo.gl/ZrILZv)  
-
 這個表單會展示常用表單元件、基本Directive和Controller的功能運作。由於網路上有很多大大的教學文章，因此在這裡只記錄一些我在學習/實作上遇到的重要觀念。 
-
-<!-- more -->
 
 - 單向資料綁定使用「ng-bind」、「ng-check」或「{{}}」（雙大括號），而雙向資料綁定則使用「ng-model」。
 - 當使用ng-model時，Angular.js會自動建立關係鏈(chain)中必要的物件和Key值來實體化資料綁定的連結。因此不需要在程式碼中宣告user變數，直到使用者在username、password欄位輸入內容，就會自動建立user物件。並且，取用表單中的username與password不需要再宣告額外的變數，因為對於表單的呈現是直接模塑(modeling)成為controller裡的物件。因此，在取用表單內容值時可避免處理任何額外的工作。 範例如下：
@@ -108,3 +103,4 @@
 - [AngularJS 建置與執行](http://www.books.com.tw/products/0010669125)，[PDF下載](http://it-ebooks.info/book/3890/)，[範例程式碼](https://github.com/shyamseshadri/angularjs-up-and-running)
 - [Day27- 入門AngularJS筆記-AngularJS指令(23): ng-form](http://ithelp.ithome.com.tw/question/10140193)
 - [AngularJS - TodoList](http://cythilya.blogspot.tw/2015/07/angularjs-todolist.html)
+- [網誌版](http://cythilya.blogspot.tw/2015/11/angularjs-form-example.html)
