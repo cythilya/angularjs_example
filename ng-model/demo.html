@@ -1,198 +1,210 @@
 <!doctype html>
 <html ng-app="formApp">
-<head>
-<meta charset="utf-8">
-<title>Form App</title>
-<link rel="stylesheet" href="css/style.css">
-<style>
-.errorMsg{
-	color: red;
-}
-input.ng-dirty.ng-invalid{
-	background-color: #F8E0E0;
-}
-input.ng-dirty.ng-invalid-minlength{
-	background-color: #F5BCA9;
-}
-input.ng-dirty.ng-valid{
-	background-color: #fff;
-}
-</style>
-</head>
-<body ng-controller="MainCtrl as ctrl">
-<form name="profileForm" ng-submit="ctrl.submit()">
-	<header>
-    	<h2>Hi, {{ctrl.user.username}}</h2>
-    	<div>Angular.js Form Example</div>
-  	</header>
-	<div class="group">
-    	<label for="field1">Name</label>
-    	<div class="item">
-      		<input 
-      			id="field1" 
-      			name="username" 
-      			type="text"
-      			required
-      			ng-model="ctrl.user.username">
-	    	<ul class="errorMsg">
-	    		<li ng-show="profileForm.username.$error.required">This is a required field.</li>
-	    		<!-- <li ng-show="profileForm.email.$invalid">This field is invalid.</li> -->
-	    	</ul>
-    	</div>
-  	</div>
-	<div class="group">
-    	<label for="field2">Email</label>
-    	<div class="item">
-      		<input 
-      			id="field2" 
-      			name="email" 
-      			type="email" 
-      			required
-      			ng-minlength="3"
-            ng-maxlength="100"
-      			ng-model="ctrl.user.email"> 
-	    	<ul class="errorMsg">
-	    		<li ng-show="profileForm.email.$error.required">This is a required field.</li>
-	    		<!-- <li ng-show="profileForm.email.$invalid">This field is invalid.</li> -->
-          <li ng-show="profileForm.email.$error.minlength">Minium length required is 3.</li>
-	    		<li ng-show="profileForm.email.$error.maxlength">Max length required is 100.</li>
-	    		<li ng-show="profileForm.email.$error.email">Invalid email format.</li>
-	    	</ul>      			
-   		</div>
-  	</div>
-	<div class="group">
-    	<label for="birthyear">Birth Year</label>
-    	<div class="item">
-      		<input 
-      			id="birthyear" 
-      			name="birthyear" 
-      			type="number"
-      			required
-      			ng-model="ctrl.user.birthyear">
-    	</div>
-  	</div>  	
-	<div class="group">
-    	<label for="joindate">Join Date</label>
-    	<div class="item">
-      		<input 
-      			id="joindate" 
-      			name="joindate" 
-      			type="date"
-      			required
-      			ng-model="ctrl.user.joindate">
-    	</div>
-  	</div>    	
-	<div class="group">
-    	<label for="website">Website</label>
-    	<div class="item">
-      		<input 
-      			id="website" 
-      			name="website" 
-      			type="url"
-      			required
-      			ng-model="ctrl.user.website">
-    	</div>
-  	</div>    	
-	<div class="group">
-    	<label for="field3">Message</label>
-		<div class="item">
-      		<textarea 
-      			id="field3" 
-      			name="message" 
-      			rows="10" 
-      			cols="50"
-      			required
-      			ng-model="ctrl.user.message">
-      		</textarea>
-	    	<ul class="errorMsg">
-	    		<li ng-show="profileForm.message.$error.required">This is a required field.</li>
-	    		<!-- <li ng-show="profileForm.message.$invalid">This field is invalid.</li> -->
-	    	</ul>        		
-    	</div>
-  	</div>
-  	<div class="group">
-    	<fieldset>
-		    <legend>Select some food you like to eat</legend>
-		   	<div class="itemList" ng-repeat="fruit in ctrl.user.food">
-      			<div class="item">
-		      		<input 
-		      			id="{{fruit.label}}" 
-		      			name="filed4" 
-		      			type="checkbox"
-		      			ng-model="fruit.selected"
-		      			ng-true-value="'YES'"
-		      			ng-false-value="'NO'">
-		      		<label class="choice" for="{{fruit.label}}" ng-bind="fruit.label"></label>
-		      	</div>
-      		</div>
-    	</fieldset>
-  	</div>
-	<div class="group">
-    	<fieldset>
-      		<legend>Select a dessert you like to eat</legend>
-      		<div class="itemList" ng-init=" fav = { desserts: 'Ice Cream'} " ng-repeat="dessert in ctrl.user.desserts">
-		      	<div class="item">
-		      		<input 
-		      			id="{{dessert.label}}" 
-		      			name="field5" 
-		      			type="radio"
-		      			ng-model="fav.desserts"
-		      			value="{{dessert.label}}">
-		      		<label class="choice" for="{{dessert.label}}" ng-bind="dessert.label"></label>
-		      	</div>
-	     	</div>
-    	</fieldset>
-  	</div>
-	<div class="group">
-	    <label>Select a Country</label>
-	    <div class="item">
-		    <select name="field6" class="field select medium"
-		    	ng-model="ctrl.user.selectedCountryId"
-		    	ng-options="c.id as c.label for c in ctrl.user.countries"> 
-		    </select>
-		    <p>
-			    Selected Country ID : {{ctrl.user.selectedCountryId}}
-			</p>
-	    </div>
-	</div>
-  	<div class="group">
-		<div class="item">
-  			<input 
-  				type="submit" 
-  				value="Submit"
-  				ng-disabled="profileForm.$invalid">
-	    </div>
-	</div>
-</form>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>	
-<script>
-angular.module('formApp', []).controller('MainCtrl', [function(){
-	var self = this;
-	self.user = { 
-		username: '',
-		email: '',
-		food: [
-			{ label: 'Apple', selected: 'YES' },
-			{ label: 'Banana', selected: 'NO' },
-			{ label: 'Orange', selected: 'YES' }
- 		],
-		desserts: [
-			{ label: 'Ice Cream' },
-			{ label: 'Chocolate Cake'},
-			{ label: 'Apple Pie'}
- 		],
- 		countries: [
-        	{label: 'Taiwan', id: 1},
-        	{label: 'Japan', id: 2},
-        	{label: 'Other', id: 3}
-        ],
-        selectedCountryId: 3
-	};
-	
-	self.submit = function(){
-		console.log('user submit form');
-	};
-}]);
-</script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Form App</title>
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+            .errorMsg{
+            color: red;
+            }
+            input.ng-dirty.ng-invalid{
+            background-color: #F8E0E0;
+            }
+            input.ng-dirty.ng-invalid-minlength{
+            background-color: #F5BCA9;
+            }
+            input.ng-dirty.ng-valid{
+            background-color: #fff;
+            }
+        </style>
+    </head>
+    <body ng-controller="MainCtrl as ctrl">
+        <form novalidate name="profileForm" ng-submit="ctrl.submit()">
+            <header>
+                <h2>Hi, {{ctrl.user.username}}</h2>
+                <div>Angular.js Form Example</div>
+            </header>
+            <div class="group">
+                <label for="field1">Name</label>
+                <div class="item">
+                    <input 
+                        id="field1" 
+                        name="username" 
+                        type="text"
+                        required
+                        ng-model="ctrl.user.username">
+                    <ul class="errorMsg">
+                        <li ng-show="profileForm.username.$error.required">This is a required field.</li>
+                        <!-- <li ng-show="profileForm.email.$invalid">This field is invalid.</li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <label for="field2">Email</label>
+                <div class="item">
+                    <input 
+                        id="field2" 
+                        name="email" 
+                        type="email" 
+                        required
+                        ng-minlength="3"
+                        ng-maxlength="100"
+                        ng-model="ctrl.user.email"> 
+                    <ul class="errorMsg">
+                        <li ng-show="profileForm.email.$error.required">This is a required field.</li>
+                        <!-- <li ng-show="profileForm.email.$invalid">This field is invalid.</li> -->
+                        <li ng-show="profileForm.email.$error.minlength">Minium length required is 3.</li>
+                        <li ng-show="profileForm.email.$error.maxlength">Max length required is 100.</li>
+                        <li ng-show="profileForm.email.$error.email">Invalid email format.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <label for="birthyear">Birth Year</label>
+                <div class="item">
+                    <input 
+                        id="birthyear" 
+                        name="birthyear" 
+                        type="number"
+                        required
+                        ng-model="ctrl.user.birthyear">
+                </div>
+            </div>
+            <div class="group">
+                <label for="joindate">Join Date</label>
+                <div class="item">
+                    <input 
+                        id="joindate" 
+                        name="joindate" 
+                        type="date"
+                        required
+                        ng-model="ctrl.user.joindate">
+                </div>
+            </div>
+            <div class="group">
+                <label for="website">Website</label>
+                <div class="item">
+                    <input 
+                        id="website" 
+                        name="website" 
+                        type="url"
+                        required
+                        ng-model="ctrl.user.website">
+                </div>
+            </div>
+            <div class="group">
+                <label for="field3">Message</label>
+                <div class="item">
+                    <textarea 
+                        id="field3" 
+                        name="message" 
+                        rows="10" 
+                        cols="50"
+                        required
+                        ng-model="ctrl.user.message">
+                    </textarea>
+                    <ul class="errorMsg">
+                        <li ng-show="profileForm.message.$error.required">This is a required field.</li>
+                        <!-- <li ng-show="profileForm.message.$invalid">This field is invalid.</li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="group">
+                <fieldset>
+                    <legend>Select some food you like to eat</legend>
+                    <div class="itemList" ng-repeat="fruit in ctrl.user.food">
+                        <div class="item">
+                            <input 
+                                id="{{fruit.label}}" 
+                                name="filed4" 
+                                type="checkbox"
+                                ng-model="fruit.selected"
+                                ng-true-value="'YES'"
+                                ng-false-value="'NO'">
+                            <label class="choice" for="{{fruit.label}}" ng-bind="fruit.label"></label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="group">
+                <fieldset>
+                    <legend>Select a dessert you like to eat</legend>
+                    <div class="itemList" ng-init=" fav = { desserts: 'Ice Cream'} " ng-repeat="dessert in ctrl.user.desserts">
+                        <div class="item">
+                            <input 
+                                id="{{dessert.label}}" 
+                                name="field5" 
+                                type="radio"
+                                ng-model="fav.desserts"
+                                value="{{dessert.label}}">
+                            <label class="choice" for="{{dessert.label}}" ng-bind="dessert.label"></label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="group">
+                <label>Select a Country</label>
+                <div class="item">
+                    <select name="field6" class="field select medium"
+                        ng-model="ctrl.user.selectedCountryId"
+                        ng-options="c.id as c.label for c in ctrl.user.countries"> 
+                    </select>
+                    <p>
+                        Selected Country ID : {{ctrl.user.selectedCountryId}}
+                    </p>
+                </div>
+            </div>
+            <div class="group">
+                <label>Add Some Note</label>
+                <div class="item">
+                  <ng-form name="noteForm">
+                    <input type="text"
+                           name="noteField"
+                           ng-model="ctrl.user.notes"
+                           required>
+                  </ng-form>
+                </div>
+            </div>
+            <div class="group">
+                <div class="item">
+                    <input 
+                        type="submit" 
+                        value="Submit"
+                        ng-disabled="profileForm.$invalid">
+                </div>
+            </div>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script> 
+        <script>
+            angular.module('formApp', []).controller('MainCtrl', [function(){
+              var self = this;
+              self.user = { 
+                username: '',
+                email: '',
+                food: [
+                  { label: 'Apple', selected: 'YES' },
+                  { label: 'Banana', selected: 'NO' },
+                  { label: 'Orange', selected: 'YES' }
+                ],
+                desserts: [
+                  { label: 'Ice Cream' },
+                  { label: 'Chocolate Cake'},
+                  { label: 'Apple Pie'}
+                ],
+                countries: [
+                      {label: 'Taiwan', id: 1},
+                      {label: 'Japan', id: 2},
+                      {label: 'Other', id: 3}
+                    ],
+                selectedCountryId: 3,
+                notes: ''
+              };
+              
+              self.submit = function(){
+                console.log('user submit form');
+              };
+            }]);
+        </script>
+    </body>
 </html>
