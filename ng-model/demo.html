@@ -158,11 +158,12 @@
             <div class="group">
                 <label>Add Some Note</label>
                 <div class="item">
-                  <ng-form name="noteForm">
+                  <ng-form name="noteForm" ng-repeat="note in ctrl.user.notes">
                     <input type="text"
                            name="noteField"
-                           ng-model="ctrl.user.notes"
+                           ng-model="note"
                            required>
+                    <br><br>
                   </ng-form>
                 </div>
             </div>
@@ -198,7 +199,10 @@
                       {label: 'Other', id: 3}
                     ],
                 selectedCountryId: 3,
-                notes: ''
+                notes: [
+                  'note1...note1...note1',
+                  'note2...note2...note2'
+                ]
               };
               
               self.submit = function(){
